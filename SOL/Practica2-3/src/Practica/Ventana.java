@@ -4,6 +4,8 @@
  */
 package Practica;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DAM2_09
@@ -15,6 +17,7 @@ public class Ventana extends javax.swing.JFrame {
      */
     public Ventana() {
         initComponents();
+
     }
 
     /**
@@ -34,8 +37,17 @@ public class Ventana extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Boton_Añadir.setText("Añadir");
+        Boton_Añadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_AñadirActionPerformed(evt);
+            }
+        });
 
-        ComboBox_Modulos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Campo_Añadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Campo_AñadirActionPerformed(evt);
+            }
+        });
 
         Texto_Añdir.setText("Añade los modulos de los que estas matriculados");
 
@@ -44,37 +56,72 @@ public class Ventana extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Campo_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                        .addComponent(ComboBox_Modulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Boton_Añadir))
-                .addGap(65, 65, 65))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(Texto_Añdir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addComponent(Boton_Añadir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Texto_Añdir)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Campo_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(ComboBox_Modulos, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(39, 39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(Texto_Añdir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Campo_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboBox_Modulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Boton_Añadir)
-                .addGap(132, 132, 132))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Campo_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo_AñadirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Campo_AñadirActionPerformed
+
+    private void Boton_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AñadirActionPerformed
+
+        String modulo = Campo_Añadir.getText();
+        if(controlCampoAñadir()){
+            return;
+        }
+        
+        
+        
+        añadirModulo(modulo);
+        
+        Campo_Añadir.setText("");
+    }//GEN-LAST:event_Boton_AñadirActionPerformed
+
+    private boolean controlCampoAñadir(){
+        if(Campo_Añadir.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"El campo donde hay que añidr modulo esta vacio");
+            return true;
+        }
+        return false;
+    }
+    private void añadirModulo(String entrada){
+        for (int i = 0; i < ComboBox_Modulos.getItemCount(); i++) {
+            if(entrada.equalsIgnoreCase(ComboBox_Modulos.getItemAt(i))){
+                 JOptionPane.showMessageDialog(null,"El modulo esta repetido");
+                 return;
+            }
+        }
+        ComboBox_Modulos.addItem(entrada);
+    }
     /**
      * @param args the command line arguments
      */
