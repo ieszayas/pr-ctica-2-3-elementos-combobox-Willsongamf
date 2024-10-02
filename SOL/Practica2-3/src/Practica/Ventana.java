@@ -4,6 +4,10 @@
  */
 package Practica;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
 /**
  *
  * @author DAM2_09
@@ -14,7 +18,14 @@ public class Ventana extends javax.swing.JFrame {
      * Creates new form Ventana
      */
     public Ventana() {
+        try{
+             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        }catch(Exception e){
+            System.out.println("Error en el look and feel");
+        }
+       
         initComponents();
+
     }
 
     /**
@@ -30,50 +41,153 @@ public class Ventana extends javax.swing.JFrame {
         Campo_Añadir = new javax.swing.JTextField();
         ComboBox_Modulos = new javax.swing.JComboBox<>();
         Texto_Añdir = new javax.swing.JLabel();
+        Boton_AgregarTodos = new javax.swing.JButton();
+        Boton_BorrarTodos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Boton_Añadir.setText("Añadir");
+        Boton_Añadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_AñadirActionPerformed(evt);
+            }
+        });
 
-        ComboBox_Modulos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Campo_Añadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Campo_AñadirActionPerformed(evt);
+            }
+        });
 
         Texto_Añdir.setText("Añade los modulos de los que estas matriculados");
+
+        Boton_AgregarTodos.setText("Agregar Todos");
+        Boton_AgregarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_AgregarTodosActionPerformed(evt);
+            }
+        });
+
+        Boton_BorrarTodos.setText("Borrar Todos");
+        Boton_BorrarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_BorrarTodosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Boton_AgregarTodos)
+                .addGap(37, 37, 37)
+                .addComponent(Boton_BorrarTodos)
+                .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Campo_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                        .addComponent(ComboBox_Modulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Boton_Añadir))
-                .addGap(65, 65, 65))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(Texto_Añdir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Texto_Añdir)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Campo_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(ComboBox_Modulos, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(Boton_Añadir)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(Texto_Añdir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Campo_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboBox_Modulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Boton_Añadir)
-                .addGap(132, 132, 132))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Boton_AgregarTodos)
+                    .addComponent(Boton_BorrarTodos))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Campo_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Campo_AñadirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Campo_AñadirActionPerformed
+
+    private void Boton_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AñadirActionPerformed
+
+        String modulo = Campo_Añadir.getText();
+        if (controlCampoAñadir()) {
+            return;
+        }
+
+        añadirModulo(modulo, false);
+
+        Campo_Añadir.setText("");
+    }//GEN-LAST:event_Boton_AñadirActionPerformed
+
+    private void Boton_BorrarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_BorrarTodosActionPerformed
+        ComboBox_Modulos.removeAllItems();
+    }//GEN-LAST:event_Boton_BorrarTodosActionPerformed
+
+    private void Boton_AgregarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AgregarTodosActionPerformed
+        ArrayList<String> lista_modulos = new ArrayList();
+        lista_modulos.add("Lenguaje de Marcas");
+        lista_modulos.add("Programacion");
+        lista_modulos.add("Base De Datos");
+        lista_modulos.add("Entornos");
+        lista_modulos.add("FOL");
+        lista_modulos.add("Sistemas");
+
+        for (String modulo : lista_modulos) {
+            añadirModulo(modulo,true);
+
+        }
+    }//GEN-LAST:event_Boton_AgregarTodosActionPerformed
+
+    private boolean controlCampoAñadir() {
+        if (Campo_Añadir.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo donde hay que añidr modulo esta vacio");
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @return void
+     * @param String para añadir al combobox y un boolean para saber si lo llama
+     * el boton añadir o el agragar todos
+     */
+    private void añadirModulo(String entrada, boolean control_boton_agragartodo) {
+        if (control_boton_agragartodo) {
+            for (int i = 0; i < ComboBox_Modulos.getItemCount(); i++) {
+                if (entrada.equalsIgnoreCase(ComboBox_Modulos.getItemAt(i))) {
+                    return;
+                }
+            }
+            ComboBox_Modulos.addItem(entrada);
+        } else {
+            for (int i = 0; i < ComboBox_Modulos.getItemCount(); i++) {
+                if (entrada.equalsIgnoreCase(ComboBox_Modulos.getItemAt(i))) {
+                    JOptionPane.showMessageDialog(null, "El modulo esta repetido");
+                    return;
+                }
+            }
+            ComboBox_Modulos.addItem(entrada);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -111,7 +225,9 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Boton_AgregarTodos;
     private javax.swing.JButton Boton_Añadir;
+    private javax.swing.JButton Boton_BorrarTodos;
     private javax.swing.JTextField Campo_Añadir;
     private javax.swing.JComboBox<String> ComboBox_Modulos;
     private javax.swing.JLabel Texto_Añdir;
