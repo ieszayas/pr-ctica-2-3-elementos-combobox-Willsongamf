@@ -18,11 +18,6 @@ public class Ventana extends javax.swing.JFrame {
      * Creates new form Ventana
      */
     public Ventana() {
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (Exception e) {
-            System.out.println("Error en el look and feel");
-        }
 
         initComponents();
 
@@ -247,7 +242,7 @@ public class Ventana extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("com.sun.java.swing.plaf.windows.WindowsLookAndFeel".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
