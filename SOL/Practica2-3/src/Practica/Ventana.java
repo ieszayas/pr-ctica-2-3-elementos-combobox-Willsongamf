@@ -47,6 +47,7 @@ public class Ventana extends javax.swing.JFrame {
         Boton_Papelera = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Modulos");
 
         Boton_Añadir.setText("Añadir");
         Boton_Añadir.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +178,7 @@ public class Ventana extends javax.swing.JFrame {
     private ArrayList<String> crearModulos(Object curso) {
         ArrayList<String> lista_modulos = new ArrayList();
         if (curso.getClass() != String.class) {
-
+            throw new ClassCastException("Error al crear los modulos de un curso");
         }
         String other = (String) curso;
         if (other.equalsIgnoreCase("Primero")) {
