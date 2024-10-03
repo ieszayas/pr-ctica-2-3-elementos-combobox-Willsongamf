@@ -46,7 +46,7 @@ Añade otro *combobox* para poder elegir curso:
 
 | ID Caso Prueba | Descripción Caso de Prueba      | Entrada                  | Salida Esperada                                          | Resultado   |
 |----------------|--------------------------------|--------------------------|----------------------------------------------------------|-------------|
-| 01             | Selección combobox curso        | Seleccionar curso combobox| Agrega el curso 1º/2º al inicio del texto en el combobox principal | OK|
+| 01             | Selección combobox curso        | Seleccionar curso combobox| Agrega el curso 1º/2º al inicio del texto en el combobox principal | No cumple|
 | 02             | Botón "agregar todo"            | Seleccionar curso combobox| Agrega todos los módulos del curso seleccionado en el combobox | OK|
 | 03             | Botón "borrar"                  | Seleccionar curso combobox| Borra el curso del combobox que esté seleccionado         | OK|
  
